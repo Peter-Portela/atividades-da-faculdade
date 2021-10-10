@@ -1,4 +1,7 @@
-import java.util.Date;
+//Atividade de Ordenação de Vetor
+//Materia Estrutura de Dados
+
+import java.util.Date; //
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,12 +10,6 @@ public class Ordenacao {
     static void geraVetor (int[] v, int limite) {
         Random random = new Random();
         for (int i=0; i<v.length; i++) v[i] = random.nextInt(limite);
-    }
-    //mostra o vetor
-    static void mostraVetor(int[] v, String msg) {
-        System.out.println(msg);
-        for (int i=0; i<v.length; i++) System.out.print(v[i] + " ");
-        System.out.println();
     }
     //Bubble Sort
     static void bubble (int[] v) {
@@ -46,8 +43,8 @@ public class Ordenacao {
             int temp = v[i]; v[i] = v[min]; v[min] = temp;
          }
       }  
-
-    public static void main(String[] args) {
+    
+      public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         System.out.print("digite o tamanho do vetor: ");
         int n = entrada.nextInt();
@@ -55,36 +52,41 @@ public class Ordenacao {
         int limite = entrada.nextInt();
         int[] v = new int[n];
         geraVetor(v, limite);
+        //Copia o conteudo de "v" para "v2" com o uso do metodo "clone()"
+		int [] v2 = v.clone();  //este comando reserva espaco para "b
+                                //e faz a copia do conteudo de "a" para "b"
 
-        //mostraVetor (v, "Vetor gerado:");
         System.out.println("ordenando vetor...");
-        
+
+        //------------------------------------------------------------------------------------
         //Bubble Sort
+        //------------------------------------------------------------------------------------
         Date date = new Date();
         long ini = date.getTime();
         bubble(v);
         long fim = new Date().getTime();
-      
+        //tempo de ordenação
         System.out.println("o Bubble demorou " + (fim-ini) + "ms para tamanho " + n);
-      
-        //mostraVetor(v, "vetor ordenado:");
-        geraVetor(v, limite);
+
+        //------------------------------------------------------------------------------------
         //Insert Sort
+        //------------------------------------------------------------------------------------
+        v = v2.clone();
         Date dateIns = new Date();
         long iniIns = dateIns.getTime();
         insertion(v);
         long fimIns = new Date().getTime();
-
-        //mostraVetor(v, "vetor ordenado:");
+        //tempo de ordenação
         System.out.println("o Insertion demorou " + (fimIns-iniIns) + "ms para tamanho " + n);
-    
-        geraVetor(v, limite);
+       
+        //------------------------------------------------------------------------------------
         //Selection Sort
+        //------------------------------------------------------------------------------------
         Date dateSel = new Date();
         long iniSel = dateSel.getTime();
-        selection(v);
+        selection(v2);
         long fimSel = new Date().getTime();
-        
+        //tempo de ordenação
         System.out.println("o Selection demorou " + (fimSel-iniSel) + "ms para tamanho " + n);
        
         entrada.close();
