@@ -4,7 +4,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Questao2 {
+public class Busca {
     
     //gera o vetor
     static void geraVetor (int[] v) {
